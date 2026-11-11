@@ -128,17 +128,17 @@ components:
       properties:
         title:
           type: string
-          minLength: 1
+          minLength: 3
           maxLength: 200
           example: Test Title
         author:
           type: string
-          minLength: 1
+          minLength: 3
           maxLength: 200
           example: Author 1
         genre:
           type: string
-          minLength: 1
+          minLength: 3
           maxLength: 200
           example: Software Engineering
         isbn:

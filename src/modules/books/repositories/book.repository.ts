@@ -1,4 +1,4 @@
-import { Book, CreateBook } from '@/modules/books/helper/book.types.js';
+import { Book, CreateBook } from '#/modules/books/helper/book.types.js';
 import { BOOKS_SEED_DATA } from '../helper/book.seed.js';
 import { randomUUID } from 'node:crypto';
 

@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 
-import { CreateBook } from '@/modules/books/helper/book.types.js';
-import { createBookService } from '@/modules/books/services/book.service.js';
+import { CreateBook } from '#/modules/books/helper/book.types.js';
+import { createBookService } from '#/modules/books/services/book.service.js';
 
 type BookService = ReturnType<typeof createBookService>;
 
@@ -10,7 +10,7 @@ export const createBookController = (bookService: BookService) => {
     const books = bookService.getAllBooks();
 
     res.status(200).json({
-      status: true,
+      success: true,
       data: books,
     });
   };
@@ -19,7 +19,7 @@ export const createBookController = (bookService: BookService) => {
     const book = bookService.getBookById(req.params.id);
 
     return res.status(200).json({
-      status: true,
+      success: true,
       data: book,
     });
   };
@@ -30,7 +30,7 @@ export const createBookController = (bookService: BookService) => {
     const book = bookService.createBook(input);
 
     return res.status(201).json({
-      status: true,
+      success: true,
       data: book,
     });
   };

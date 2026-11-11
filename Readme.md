@@ -64,12 +64,15 @@ npm run dev
 
 ## API Endpoints
 
+Health Endpoint to check the service:
+
+`http://localhost:3000/health`
+
 Base URL: `http://localhost:3000/v1/api`
 
 - GET    /books - To get all books
 - GET    /books/:id - To get a book by Id
 - POST   /books - To create a book entry
-- GET(Browser) http://localhost:3000/docs/ - for Swagger
 
 ## API Documentation
 
@@ -83,7 +86,7 @@ OpenAPI specification:
 
 ## Running Tests
 
-Run all Books module tests:
+Run Books module tests(Have added few only):
 
 ```bash
 npm run test:books
@@ -101,8 +104,7 @@ The application uses an in-memory Map to simulate database storage.
 
 Sample books are initialized when the application starts.
 
-**Note:** Data is not persistent. All newly created books are lost when
-the application restarts.
+**Note:** Data is not persistent.
 
 ## Project Architecture
 

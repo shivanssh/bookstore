@@ -1,9 +1,9 @@
-import { CreateBook } from '@/modules/books/helper/book.types.js';
-import { BookRepository } from '@/modules/books/repositories/book.repository.js';
+import { CreateBook } from '#/modules/books/helper/book.types.js';
+import { BookRepository } from '#/modules/books/repositories/book.repository.js';
 import {
   BookNotFoundError,
   DuplicateIsbnError,
-} from '@/modules/books/helper/book.errors.js';
+} from '#/modules/books/helper/book.errors.js';
 
 export const createBookService = (bookRepository: BookRepository) => {
   const getAllBooks = () => bookRepository.findAll();

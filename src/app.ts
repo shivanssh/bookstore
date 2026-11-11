@@ -3,11 +3,11 @@ import helmet from 'helmet';
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 
-import apiRouter from '@/routes/index.js';
-import healthRouter from '@/routes/health.routes.js';
-import { swaggerSpec } from '@/config/swagger.config.js';
-import { errorMiddleware } from '@/middlewares/error.middleware.js';
-import { notFoundMiddleware } from '@/middlewares/not-found.middleware.js';
+import apiRouter from '#/routes/index.js';
+import healthRouter from '#/routes/health.routes.js';
+import { swaggerSpec } from '#/config/swagger.config.js';
+import { errorMiddleware } from '#/middlewares/error.middleware.js';
+import { notFoundMiddleware } from '#/middlewares/not-found.middleware.js';
 
 const app = express();
 

@@ -55,7 +55,7 @@ describe('BookRepository', () => {
       const books = repository.findAll();
       const selectedBook = books[0]!;
 
-      const book = repository.findById(selectedBook?.id);
+      const book = repository.findById(selectedBook?.isbn);
 
       expect(book).toEqual(selectedBook);
     });

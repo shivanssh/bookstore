@@ -14,7 +14,7 @@ export const validateBody = (schema: ZodType): RequestHandler => {
 
     if (!result.success) {
       res.status(400).json({
-        status: false,
+        success: false,
         error: {
           code: 'VALIDATION_ERROR',
           message: 'Request body validation failed',
@@ -36,9 +36,12 @@ export const validateParams = (schema: ZodType): RequestHandler => {
 
     if (!result.success) {
       res.status(400).json({
-        status: false,
-        message: 'Request params validation failed',
-        details: mapOverErrFields(result.error.issues),
+        success: false,
+        error: {
+          code: 'VALIDATION_ERROR',
+          message: 'Request params validation failed',
+          details: mapOverErrFields(result.error.issues),
+        },
       });
 
       return;

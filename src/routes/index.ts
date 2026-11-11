@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { bookRouter } from '@/modules/books/index.js';
+import { bookRouter } from '#/modules/books/index.js';
 
 const rootRouter = Router();
 const apiRouter = Router();

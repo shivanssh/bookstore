@@ -1,4 +1,4 @@
-import { Book } from '@/modules/books/helper/book.types.js';
+import { Book } from '#/modules/books/helper/book.types.js';
 
 export const BOOKS_SEED_DATA: Book[] = [
   {
@@ -6,7 +6,7 @@ export const BOOKS_SEED_DATA: Book[] = [
     title: 'Some book title 1',
     author: 'Author 1',
     genre: 'Software Engineering',
-    isbn: '2342342344', //International Standard Book Number
+    isbn: '2342342332', //International Standard Book Number
     description: 'Book description 1',
     createdAt: new Date('2026-11-11T10:00:00.000Z'),
     updatedAt: new Date('2026-11-11T10:00:00.000Z'),
@@ -27,7 +27,7 @@ export const BOOKS_SEED_DATA: Book[] = [
     title: 'Some book title 3',
     author: 'Author 3',
     genre: 'Software Engineering',
-    isbn: '3343343344',
+    isbn: '3343343398',
     description: 'Book description 3',
     createdAt: new Date('2026-10-23T10:00:00.000Z'),
     updatedAt: new Date('2026-10-23T10:00:00.000Z'),
