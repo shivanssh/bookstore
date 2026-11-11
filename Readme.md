@@ -125,3 +125,4 @@ Flow:
 ## Note
 - Ignore vulnerabilities, they are coming from dev dependencies from packages directly and it is will never reach prod env. 
 - For confirmation run `npm audit --omit=dev` to validate.
+- For testing prefer Postman, Thunder Client and Insomnia. 
