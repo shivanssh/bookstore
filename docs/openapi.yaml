@@ -31,7 +31,7 @@ paths:
                     title: Some book title 1
                     author: Author 1
                     genre: Software Engineering
-                    isbn: "123124124234"
+                    isbn: "2342342342243"
                     description: Test description.
                     createdAt: "2026-11-11T11:00:00.000Z"
                     updatedAt: "2026-11-11T11:00:00.000Z"
@@ -53,7 +53,7 @@ paths:
               title: Some book title 4
               author: Author 4
               genre: Software Engineering
-              isbn: "234234234224"
+              isbn: "2342342342243"
               description: Test description.
       responses:
         '201':
@@ -67,7 +67,7 @@ paths:
                   title: Some book title 4
                   author: Author 4
                   genre: Software Engineering
-                  isbn: "234234234224"
+                  isbn: "2342342342243"
                   description: Test description.
                   createdAt: "2026-11-11T10:00:00.000Z"
                   updatedAt: "2026-11-11T10:00:00.000Z"
@@ -105,7 +105,7 @@ paths:
                   title: Some book title 4
                   author: Author 4
                   genre: Software Engineering
-                  isbn: "234234234224"
+                  isbn: "2342342342243"
                   description: Test description.
                   createdAt: "2026-11-11T10:00:00.000Z"
                   updatedAt: "2026-11-11T10:00:00.000Z"
@@ -143,7 +143,7 @@ components:
           example: Software Engineering
         isbn:
           type: string
-          example: "23423423423"
+          example: "2342342342243"
         description:
           type: string
           maxLength: 2000
