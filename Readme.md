@@ -120,3 +120,8 @@ The Books module follows a modular architecture with separation of concerns:
 Flow:
 
 - Routes -> Middleware(validation/404/error) -> Controller -> Service -> Repository -> DB(in-memory)
+
+
+## Note
+- Ignore vulnerabilities, they are coming from dev dependencies from packages directly and it is will never reach prod env. 
+- For confirmation run `npm audit --omit=dev` for validation.

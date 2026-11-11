@@ -5,7 +5,7 @@ const errLocalization = 'Something went wrong!';
 
 export const errorMiddleware: ErrorRequestHandler = (err, _req, res, _next) => {
   const statusCode =
-    typeof err.statusCode === 'number' &&
+    typeof err?.statusCode === 'number' &&
     err.statusCode >= 400 &&
     err.statusCode < 600
       ? err.statusCode
