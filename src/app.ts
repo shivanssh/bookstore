@@ -1,9 +1,11 @@
 import cors from 'cors';
 import helmet from 'helmet';
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
 
 import apiRouter from '@/routes/index.js';
 import healthRouter from '@/routes/health.routes.js';
+import { swaggerSpec } from '@/config/swagger.config.js';
 import { errorMiddleware } from '@/middlewares/error.middleware.js';
 import { notFoundMiddleware } from '@/middlewares/not-found.middleware.js';
 
@@ -20,6 +22,9 @@ app.use(express.urlencoded({ extended: true, limit: '5mb' }));
 //routes
 app.use('/health', healthRouter);
 app.use(apiRouter);
+
+//swagger
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //Error + 404 route
 app.use(notFoundMiddleware);

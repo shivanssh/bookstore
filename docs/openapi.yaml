@@ -1,0 +1,207 @@
+openapi: 3.0.3
+
+info:
+  title: Bookstore
+  version: v0.0.1
+
+servers:
+  - url: http://localhost:3000/v1/api
+    description: Local development server
+
+tags:
+  - name: Books
+    description: Book management
+
+paths:
+  /books:
+    get:
+      tags:
+        - Books
+      summary: List all books
+      description: Returns all available books.
+      responses:
+        '200':
+          description: Books retrieved successfully
+          content:
+            application/json:
+              example:
+                success: true
+                data:
+                  - id: "cf63a4c9-7fc5-4afb-8707-9ec69093f324"
+                    title: Some book title 1
+                    author: Author 1
+                    genre: Software Engineering
+                    isbn: "123124124234"
+                    description: Test description.
+                    createdAt: "2026-11-11T11:00:00.000Z"
+                    updatedAt: "2026-11-11T11:00:00.000Z"
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    post:
+      tags:
+        - Books
+      summary: Create a new book
+      description: Creates a new book after validating the request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBookInput'
+            example:
+              title: Some book title 4
+              author: Author 4
+              genre: Software Engineering
+              isbn: "234234234224"
+              description: Test description.
+      responses:
+        '201':
+          description: Book created successfully
+          content:
+            application/json:
+              example:
+                success: true
+                data:
+                  id: "cf63a4c9-7fc5-4afb-8707-9ec69093f324"
+                  title: Some book title 4
+                  author: Author 4
+                  genre: Software Engineering
+                  isbn: "234234234224"
+                  description: Test description.
+                  createdAt: "2026-11-11T10:00:00.000Z"
+                  updatedAt: "2026-11-11T10:00:00.000Z"
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '409':
+          $ref: '#/components/responses/DuplicateIsbnError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /books/{id}:
+    get:
+      tags:
+        - Books
+      summary: Get book by ID
+      description: Retrieves detailed information about a specific book.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: UUID of the book
+          schema:
+            type: string
+            format: uuid
+          example: "cf63a4c9-7fc5-4afb-8707-9ec69093f324"
+      responses:
+        '200':
+          description: Book retrieved successfully
+          content:
+            application/json:
+              example:
+                success: true
+                data:
+                  id: "cf63a4c9-7fc5-4afb-8707-9ec69093f324"
+                  title: Some book title 4
+                  author: Author 4
+                  genre: Software Engineering
+                  isbn: "234234234224"
+                  description: Test description.
+                  createdAt: "2026-11-11T10:00:00.000Z"
+                  updatedAt: "2026-11-11T10:00:00.000Z"
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/BookNotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    CreateBookInput:
+      type: object
+      required:
+        - title
+        - author
+        - genre
+        - isbn
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+          example: Test Title
+        author:
+          type: string
+          minLength: 1
+          maxLength: 200
+          example: Author 1
+        genre:
+          type: string
+          minLength: 1
+          maxLength: 200
+          example: Software Engineering
+        isbn:
+          type: string
+          example: "23423423423"
+        description:
+          type: string
+          maxLength: 2000
+          example: Test description.
+
+    ApiError:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: BOOK_NOT_FOUND
+            message:
+              type: string
+              example: Book not found
+
+  responses:
+    ValidationError:
+      description: Invalid request body or route parameter
+      content:
+        application/json:
+          example:
+            success: false
+            error:
+              code: VALIDATION_ERROR
+              message: Request validation failed
+
+    BookNotFoundError:
+      description: Book does not exist
+      content:
+        application/json:
+          example:
+            success: false
+            error:
+              code: BOOK_NOT_FOUND
+              message: Book with request id not found!
+
+    DuplicateIsbnError:
+      description: ISBN already exists
+      content:
+        application/json:
+          example:
+            success: false
+            error:
+              code: DUPLICATE_ISBN
+              message: Book already exists with requested ISBN
+
+    InternalServerError:
+      description: Unexpected server error
+      content:
+        application/json:
+          example:
+            success: false
+            error:
+              code: INTERNAL_SERVER_ERROR
+              message: Something went wrong

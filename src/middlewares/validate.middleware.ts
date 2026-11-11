@@ -1,6 +1,6 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
 import { ZodType } from 'zod';
 import { $ZodIssue } from 'zod/v4/core';
+import { RequestHandler } from 'express';
 
 const mapOverErrFields = (issues: $ZodIssue[]) =>
   issues.map((issue) => ({
