@@ -8,6 +8,7 @@ import healthRouter from '#/routes/health.routes.js';
 import { swaggerSpec } from '#/config/swagger.config.js';
 import { errorMiddleware } from '#/middlewares/error.middleware.js';
 import { notFoundMiddleware } from '#/middlewares/not-found.middleware.js';
+import { generalRateLimiter } from '#/middlewares/rate-limit.middleware.js';
 
 const app = express();
 
@@ -18,6 +19,9 @@ app.use(cors()); // add UI origin ig we integrate, e.g: {origin: 'url'}
 //Parser
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true, limit: '5mb' }));
+
+//rate limiter
+app.use(generalRateLimiter);
 
 //routes
 app.use('/health', healthRouter);
