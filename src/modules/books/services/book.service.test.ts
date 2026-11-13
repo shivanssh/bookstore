@@ -1,7 +1,7 @@
 import { describe, expect, jest, test, beforeEach } from '@jest/globals';
 
-import { BookRepository } from '../repositories/book.repository.js';
-import { createBookService } from './book.service.js';
+import { createBookService } from '#/modules/books/services/book.service.js';
+import { BookRepository } from '#/modules/books/repositories/book.repository.js';
 
 describe('BookServices', () => {
   let repository: jest.Mocked<BookRepository>;
