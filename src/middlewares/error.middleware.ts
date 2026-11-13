@@ -24,7 +24,7 @@ export const errorMiddleware: ErrorRequestHandler = (err, _req, res, _next) => {
       : err?.message || errLocalization;
 
   return res.status(statusCode).json({
-    message: false,
+    success: false,
     error: {
       code: errCode,
       message: errMsg,

@@ -61,7 +61,7 @@ describe('BookRepository', () => {
     });
 
     test('Should return a null when isbn does not exists', () => {
-      const book = repository.findById('non-existing-isbn');
+      const book = repository.findByIsbn('non-existing-isbn');
 
       expect(book).toBeNull();
     });
